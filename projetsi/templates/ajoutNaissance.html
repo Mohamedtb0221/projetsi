@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title>ajouter naissance</title>
+    <style>
+        #ajt {
+            font-size: 20px;
+            font-weight: bold
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5 shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3 fw-semibold" href="#">états civils </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active fs-4 fw-semibold" aria-current="page"
+                            href="{% url 'searchN' %}">Naissance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4 px-4 fw-semibold" href="{% url 'searchM' %}">Mariage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4 px-4 fw-semibold" href="{% url 'searchD' %}">Decés</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-4 px-4 fw-semibold" href="#">other</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5 border border-dark rounded mb-5 p-5" style=" width :70%;">
+        <h3 class="text-center border border-dark rounded p-1"> Ajouter naissance : </h3>
+        <form method="post" class="form-group row g-3 m-5 ">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label class="form-label">Numero de registre</label>
+                {{form.numero_registre}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">matricule officier :</label>
+                {{form.officier}}
+            </div>
+            <br>
+            <div class="col-md-4">
+                <label class="form-label">Nom</label>
+                {{form.nom}}
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Prenom</label>
+                {{form.prenoms}}
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Sexe</label>
+                {{form.sexe}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Date naissance</label>
+                {{form.date_naiss}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Heure naissance</label>
+                {{form.heure_naiss}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Hopital</label>
+                {{form.hopital}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Pays</label>
+                {{form.pays}}
+            </div>
+            <hr style="margin-top:40px">
+            <div class="col-md-6">
+                <label class="form-label">Nom et Prénoms du Pere:</label>
+                {{form.pere}}
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Profession du Pere:</label>
+                {{form.profession_pere}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">date naissance du Pere:</label>
+                {{form.date_naiss_pere}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">lieu naissance du Pere:</label>
+                {{form.lieu_naiss_pere}}
+            </div>
+            <hr style="margin-top:40px">
+            <div class="col-md-6">
+                <label class="form-label">Nom et Prenom du Mere:</label>
+                {{form.mere}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Profession du Mere:</label>
+                {{form.profession_mere}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">date naissance du Mere:</label>
+                {{form.date_naiss_mere}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">lieu naissance du Mere:</label>
+                {{form.lieu_naiss_mere}}
+            </div>
+            <hr style="margin-top:40px">
+            <div class="col-md-6">
+                <label class="form-label">prenom du grand pere (paternel):</label>
+                {{form.grand_pere_paternel}}
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">nom et prenom du grand mere (paternel):</label>
+                {{form.grand_mere_paternel}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">prenom du grand pere (maternel):</label>
+                {{form.grand_pere_maternel}}
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">nom et prenom du grand mere (maternel):</label>
+                {{form.grand_mere_maternel}}
+            </div>
+            <br>
+            <!--un jeton pour se protéger contre les attaques csrf -->
+            <div class="row" style="width:70% ;margin-left:15%;margin-top: 40px;">
+                <div class="col-6 ">
+                    <a href="{% url 'searchN' %}" class="form-control bg-secondary fs-5 text-white  topdf"
+                        style="text-decoration:none;text-align:center;margin-right: 10%;font-weight: bold;">retour</a>
+                </div>
+                <div class="col-6 ">
+                    
+                    <input type="submit" id="ajt" class="form-control bg-secondary text-white" style="margin-left: 10%;" value="Ajouter">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

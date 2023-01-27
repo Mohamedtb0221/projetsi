@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>ajouter officier</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h4> Ajouter des officier : </h4>
+<form method="post">
+{% csrf_token %} <!--un jeton pour se protéger contre les attaques csrf -->
+{{ form.as_p }}
+<input type="submit" value="Ajouter">
+</form>
+
+</body>
+</html>

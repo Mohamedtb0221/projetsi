@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title>login</title>
+
+</head>
+<body>
+<br><br>
+<div class="form-group  border border-dark mx-auto w-50 pt-5 pb-5 rounded bg-light" >
+  <div class="row pt-3 pb-4">
+    <div class="text-center text-uppercase">
+      <h3>Connectez ici </h3><br>
+    </div>
+  </div>
+
+
+<div class="form-group mx-auto w-50 ">
+<form  method="post">
+{% csrf_token %} <!--un jeton pour se protéger contre les attaques csrf -->
+{{ form.username }}<br>
+    {{ form.password }}<br><br>
+    {% for message in messages %}
+    <div class="alert alert-danger">{{message}}</div>
+     {% endfor %}
+    <br>
+<input class="form-control-lg w-100 text-uppercase" type="submit" value="connecter">
+</form>
+</div>
+</div>
+</body>
+</html>

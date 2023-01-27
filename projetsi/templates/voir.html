@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <title>ajouter naissance</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        label{
+        font-weight:600
+        }
+        @page {
+    size: auto;
+    size: A4;
+    margin: 0mm;
+}
+    </style>
+    <script>
+    function printPage() {
+
+      var originalContent = document.body.innerHTML;
+      var printContent = document.getElementById("pdf").innerHTML;
+      document.body.innerHTML = printContent;
+      window.print();
+      document.body.innerHTML = originalContent;
+    }
+  </script>
+</head>
+<body>
+
+    <div id="pdf">
+    <div class="container mt-5 border border-dark rounded p-5"  style=" width :70%;">
+        <h3 class="text-center border border-dark rounded p-1 mb-5"> Acte de naissance : </h3>
+        <form method="post"  class="form-group row g-3 " >
+            {% csrf_token %}
+            <div class="col-7">
+                <label  class="form-label " style="text-align:left">Numero de registre : </label>
+                {{acte.numero_registre}}
+            </div>
+
+            <br>
+            <div class="col-6">
+                <label  class="form-label">Nom : </label>
+                {{acte.nom}}
+            </div>
+            <div class="col-6">
+                <label  class="form-label">Prenom : </label>
+                {{acte.prenoms}}
+            </div>
+            <div class="col-6">
+                <label  class="form-label">Sexe : </label>
+                {{acte.sexe}}
+            </div>
+            <div class="col-6">
+                <label  class="form-label">né le : </label>
+                {{acte.date_naiss}}
+            </div>
+            <div class="col-6">
+                <label class="form-label">a : </label>
+                {{acte.heure_naiss}}
+            </div>
+            <div class="col-6">
+                <label class="form-label">Hopital : </label>
+                {{acte.hopital}}
+            </div>
+            <div class="col-6">
+                <label class="form-label">Pays : </label>
+                {{acte.pays}}
+            </div>
+             <hr style="margin-top:20px">
+            <div class="col-6">
+                <label  class="form-label">le fils de (Pere) : </label>
+                {{acte.pere}}
+            </div>
+
+            <div class="col-6">
+                <label  class="form-label">Profession du Pere : </label>
+                {{acte.profession_pere}}
+            </div>
+
+             <hr style="margin-top:20px">
+            <div class="col-6">
+                <label  class="form-label">et de (Mere) : </label>
+                {{acte.mere}}
+            </div>
+            <div class="col-6">
+                <label  class="form-label">Profession du Mere : </label>
+                {{acte.profession_mere}}
+            </div>
+
+             <hr style="margin-top:20px">
+            <div class="col-6">
+                <label  class="form-label">marié(e) : </label>
+                {{estmarie}} à {{lieumar.lieu_mariage}}
+                
+            </div>
+            <br>
+            <!--un jeton pour se protéger contre les attaques csrf -->
+
+        </form>
+    </div>
+        </div>
+    <div class="row" style="width:70% ;margin-left:15%">
+        <div class="col-6 ">
+            <br>
+            <a href="{% url 'searchN' %}" class="form-control bg-secondary fs-5 text-white mb-5 topdf" style="text-decoration:none;width:60%;height:50px;text-align:center;margin-left:20%" >retour</a>
+        </div>
+        <div class="col-6 ">
+            <br>
+            <input onclick="printPage()" type="submit" id="ajt1" class="form-control bg-secondary fs-5 text-white mb-5 topdf" style="width:60%;height:50px;text-align:center;margin-left:20%" value="imprimer">
+        </div>
+
+
+        </div>
+
+
+
+
+</body>
+
+</html>
